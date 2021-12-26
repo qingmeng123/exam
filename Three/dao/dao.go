@@ -17,7 +17,7 @@ var(
 	pwd="@XUEHUI."
 	host="localhost"
 	port="3306"
-	dbname="message_board"
+	dbname="third_coin"
 )
 
 func InitDB() {
