@@ -31,4 +31,9 @@ func UpdatePassword(username,newPassword string)error  {
 	_,err:=DB.Exec("update third_coin.user set password=? where username=?",newPassword,username)
 	return err
 }
+//更新余额
+func UpdateMoney(username string ,newMoney int)error{
+	_,err:=DB.Exec("update third_coin.user set money=? where username=?",newMoney,username)
+	return err
+}
 
