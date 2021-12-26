@@ -118,3 +118,23 @@ func changePassword(ctx *gin.Context) {
 	tool.RespSuccessful(ctx)
 }
 
+//更新余额
+func UpdateMoney(ctx *gin.Context)  {
+	iUsername,_:=ctx.Get("iUsername")
+	username:=iUsername.(string)
+	changeMoney:=ctx.PostForm("change_money")	//变化的金额
+	money,err:=strconv.Atoi(changeMoney)
+	if err!=nil{
+		fmt.Println("changeMoney to int  err:",err)
+		tool.RespInternalError(ctx)
+		return
+	}
+	err=service.UpdateMoney(username,money)
+	if err!=nil{
+		fmt.Println("change money err:",err)
+		tool.RespInternalError(ctx)
+		return
+	}
+	tool.RespSuccessful(ctx)
+}
+
