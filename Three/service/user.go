@@ -58,4 +58,15 @@ func IsPasswordReasonable(password string)bool  {
 	return true
 }
 
+//更新某用户余额
+func UpdateMoney(username string,changeMoney int)error  {
+	user,err:=dao.SelectUserByUsername(username)
+	money:=user.Money+changeMoney
+	if money<0{
+		return err
+	}else {
+		err:=dao.UpdateMoney(username,money)
+		return err
+	}
+}
 
